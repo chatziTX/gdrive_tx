@@ -1,0 +1,39 @@
+﻿Using Transifex with Google Drive
+Combining Transifex with Google Drive gives you the ability to edit and share your project files with your entire team. In addition to managing your project with the Transifex client, you can use our auto-update function to update resource files without the need for a third-party service.
+Table of Contents
+* Using the Auto-Update Function
+   * Using Google Drive’s Host Feature
+   * Supplying the URL to Transifex
+   * Handling Changes
+* Using the Transifex Client
+Using the Auto-Update Function
+Transifex offers an auto-update function that periodically scans a remote file and updates your resources based on changes to that file. The only requirement is that the remote file has to be publicly accessible. To do this, we’ll use a feature in Google Drive designed for hosting static web pages. We’ll then create a URL that Transifex can use to access our resource files.
+Start by opening your project in Google Drive. Navigate to your project folder, right-click your resource file, and click “Share”. The Share Settings popup window appears: by default, the file is limited to specific users. We need to make the file publicly available so that Transifex can access it. Note that this has the side effect of making your resource file available to anyone on the public Internet.
+Click “Get shareable link” at the top-right corner of the window to show the link sharing dropdown. Click “More” under the dropdown, select “Public on the web”, then click “Save.” Your share settings should look similar to the following screenshot:
+ Google Drive share popup 
+
+Using Google Drive’s Host Feature
+After clicking Save, Google Drive gives you a link to the file. Accessing the file through this link will open a file preview, which prevents Transifex from correctly parsing the file’s contents. Instead, we’ll use Google Drive’s host feature to access the file’s contents exactly as they are.
+A regular Google Drive link looks similar to the one below. The file ID is a unique string of alphanumeric characters that identifies the file:
+https://drive.google.com/file/d/[file ID]/view?usp=sharing
+Copy the file ID into the following URL:
+https://googledrive.com/host/[file ID]
+Test the link by opening the URL in a browser. If you can see the contents of the file, then the link works.
+Supplying the URL to Transifex
+In Transifex, navigate to your project’s resource list and click “Auto update resources.”
+ Transifex resources 
+
+A new dialog box appears. Enter your newly-created URL and click “Update URL.” If Transifex can successfully access the URL, then the URL turns green.
+ Auto-update source files 
+
+Back in Google Drive, update your source file and save the changes. There’s a small delay Transifex polls the URL for changes once a day, so the updates won’t appear immediately. You can disable the auto-update function by removing the resource’s URL.
+Handling Changes
+When the auto-update function detects changes, it performs one of three actions:
+1. New strings are added to the project as expected.
+2. Modified strings are added to the project as new strings. The old string and its translations are kept in the project’s Translation Memory.
+3. Missing strings are removed from the resource. The string and its translations are kept in the project’s Translation Memory.
+Using the Transifex Client
+If you choose not to use the auto-update function, you can manually sync your resource files using the Transifex Client. While it’s less automated, the benefit is that you have control over when the Transifex project is updated. You can use Google Drive to share your project with other users, including the project’s configuration files. This way, another user can run the Transifex Client in the project folder without having to first configure the project. Just be careful not to store your .transifexrc file with the project, as it contains your account credentials.
+ Google Drive share 
+
+For more information, read our FAQ on updating source files.
