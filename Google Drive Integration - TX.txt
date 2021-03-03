@@ -25,6 +25,9 @@ In Transifex, navigate to your project’s resource list and click “Auto updat
 
 A new dialog box appears. Enter your newly-created URL and click “Update URL.” If Transifex can successfully access the URL, then the URL turns green.
  Auto-update source files 
+ 
+ A new dialog box appears. Enter your newly-created URL and click “Update URL.” If Transifex can successfully access the URL, then the URL turns green.
+ Auto-update source files 
 
 Back in Google Drive, update your source file and save the changes. There’s a small delay Transifex polls the URL for changes once a day, so the updates won’t appear immediately. You can disable the auto-update function by removing the resource’s URL.
 Handling Changes
